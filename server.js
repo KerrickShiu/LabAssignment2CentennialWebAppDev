@@ -1,6 +1,17 @@
 import config from "./config/config.js";
 import app from "./server/express.js";
 import mongoose from "mongoose";
+import contactRoutes from './server/routes/contactRoutes.js';
+import projectRoutes from './server/routes/projectRoutes.js';
+import educationRoutes from './server/routes/educationRoutes.js';
+import userRoutes from './server/routes/userRoutes.js';
+
+
+app.use('/api/contacts', contactRoutes);
+app.use('/api/projects', projectRoutes);
+app.use('/api/educations', educationRoutes);
+app.use('/api/users', userRoutes);
+
 mongoose.Promise = global.Promise;
 //test
 mongoose
@@ -16,7 +27,7 @@ mongoose.connection.on("error", () => {
   throw new Error(`unable to connect to database: ${config.mongoUri}`);
 });
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to User application." });
+  res.json({ message: "Welcome to Kerrick Shiu's Portfolio Application Backend!." });
 });
 app.listen(config.port, (err) => {
   if (err) {
