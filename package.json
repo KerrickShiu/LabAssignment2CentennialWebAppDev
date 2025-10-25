@@ -3,16 +3,17 @@
   "version": "1.0.0",
   "type": "module",
   "main": "index.js",
-  "author": "Blessing Ajiboye",
+  "author": "Kerrick Shiu",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.28.4",
     "@babel/preset-env": "^7.28.3",
     "babel-loader": "^10.0.0",
+    "concurrently": "^9.2.1",
     "nodemon": "^3.1.10"
   },
   "scripts": {
-    "dev": "concurrently 'vite' \"nodemon ../server.js\"",
+    "dev": "concurrently \"npm --prefix ./client run dev\" \"nodemon server.js\"",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
