@@ -8,13 +8,15 @@ import {
   deleteAllUsers
 } from '../controllers/userController.js';
 
+import { requireSignin } from '../middleware/signin.js';
+
 const router = express.Router();
 
-router.get('/', getAllUsers);
-router.get('/:id', getUserById);
+router.get('/', requireSignin, getAllUsers);
+router.get('/:id', requireSignin, getUserById);
+router.put('/:id', requireSignin, updateUser);
+router.delete('/:id', requireSignin, deleteUser);
+router.delete('/', requireSignin, deleteAllUsers);
 router.post('/', createUser);
-router.put('/:id', updateUser);
-router.delete('/:id', deleteUser);
-router.delete('/', deleteAllUsers);
 
 export default router;

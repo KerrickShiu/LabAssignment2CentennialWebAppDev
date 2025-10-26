@@ -5,11 +5,13 @@ import contactRoutes from './server/routes/contactRoutes.js';
 import projectRoutes from './server/routes/projectRoutes.js';
 import educationRoutes from './server/routes/educationRoutes.js';
 import userRoutes from './server/routes/userRoutes.js';
+import authRoutes from './server/routes/authRoutes.js';
 
 app.use('/api/contacts', contactRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/qualifications', educationRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/auth', authRoutes);
 
 mongoose.Promise = global.Promise;
 
